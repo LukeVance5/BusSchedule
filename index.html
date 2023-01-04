@@ -10,10 +10,15 @@
     <h1>Bus Schedule</h1>
     <img src="/images/bus.jpg" />
     <form>
-      <div>
+      <div id="action">
         <label>Bus Stop</label>
         <input type="text" id="inputStop" value="Bus Stop" />
-        <button type="button" onclick="next99()">Click</button>
+        <button
+          type="button"
+          onclick="busList(document.getElementById('inputStop').value)"
+        >
+          Click
+        </button>
       </div>
     </form>
     <p id="test">Test</p>
