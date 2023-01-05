@@ -1,8 +1,6 @@
 let busStop = 00000;
-let RouteNo= 000;
 async function busList(stop) {
   busStop = stop.trim();
-  let test =document.getElementById("test");
   try {
     if (isNaN(parseInt(busStop)) || busStop.length != 5) {
       throw "Stop must be a 5 digit number, example: 55612"
@@ -14,11 +12,13 @@ async function busList(stop) {
     const routes = obj.Routes.split(", ");
     createBusList(routes);
   } catch(err) {
-    let error = document.createElement("p1");
-    error.innerHTML= err;
-    error.id= "error";
-    let output = document.getElementById("output");
-    output.appendChild(error);
+    if (!document.getElementById("error")) {
+      let error = document.createElement("p1");
+      error.innerHTML= err;
+      error.id= "error";
+      let output = document.getElementById("output");
+      output.appendChild(error);
+    }
   }
   
   return;
@@ -38,7 +38,7 @@ function createBusList(routes) {
   busSelect.id= "busSelect";
   let select = document.createElement("div");
   select.className = "select";
-  let selected = document.createElement("span");
+  let selected = document.createElement("div");
   selected.className = "selected";
   selected.innerHTML="Select Bus";
   selected.id= "selectedBus"
@@ -71,6 +71,7 @@ function selectBus(bus) {
   if (selected.innerHTML=="Select Bus") {
     selected.innerHTML= selectedRoute;
     document.getElementById(selectedRoute).parentNode.remove();
+    nextBusTime(selectedRoute);
   } else {
     console.log(selected.innerHTML);
     let oldroute = selected.innerHTML;
@@ -85,6 +86,35 @@ function selectBus(bus) {
     bus.value= oldroute;
     li.appendChild(bus);
     buses.appendChild(li);
+    nextBusTime(selectedRoute);
   }
   return;
+}
+
+async function nextBusTime(route) {
+  let prevOut = document.getElementById("outputText") 
+  if (prevOut) {
+    prevOut.remove();
+  }
+  const response = await fetch("https://api.translink.ca/rttiapi/v1/stops/"+busStop+"/estimates?apikey=JvXiknT52GzqD8PpJnRp&routeNo="+route, {method: "GET",headers: {
+  'accept': 'application/json',},});
+  const text = await response.text(); 
+  let output = document.getElementById("output");
+  let outputText = document.createElement("p1");
+  outputText.id = "outputText";
+  console.log(text.length);
+  if (text.length > 2) {
+    const obj = JSON.parse(text)[0];
+    let nextBus= obj.Schedules[0];
+    let destination = nextBus.Destination;
+    let timeTilBus = nextBus.ExpectedCountdown;
+    if (timeTilBus > 0) {
+      outputText.innerHTML ="The " + route + " bound for " + destination + " will arrive in " + timeTilBus + " minutes.";
+    } else {
+      outputText.innerHTML ="The " + route + " bound for " + destination + " is arriving.";
+    }
+  } else {
+    outputText.innerHTML = "The " + route + " is not currently in service";
+  }
+  output.appendChild(outputText);
 }

@@ -12,22 +12,19 @@
       <h1>Bus Schedule</h1>
     </div>
     <div id="busImageContainer">
-      <img src="/images/bus.jpg" />
+      <img src="/images/bus.png" />
     </div>
-    <form>
-      <div id="action">
-        <div id="textInput">
-          <label>Bus Stop</label>
-          <input type="text" id="inputStop" value="Bus Stop" />
-          <button
-            type="button"
-            onclick="busList(document.getElementById('inputStop').value)"
-          >
-            Click
-          </button>
-        </div>
+    <div id="action">
+      <div id="textInput">
+        <input type="text" id="inputStop" value="Type Bus Stop Here" />
+        <button
+          type="button"
+          onclick="busList(document.getElementById('inputStop').value)"
+        >
+          Click
+        </button>
       </div>
-      <div id="output"></div>
-    </form>
+    </div>
+    <div id="output"></div>
   </body>
 </html>

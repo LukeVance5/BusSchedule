@@ -5,45 +5,74 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-height: 100vh;
 }
 
 img {
   height: auto;
   width: auto;
-  max-height: 40vh;
+}
+
+form {
+  flex: 1;
+}
+
+ul {
+  list-style: none;
 }
 
 .dropdown {
-  min-width: 15em;
+  width: 50%;
   position: relative;
+  justify-content: center;
 }
 
+.select {
+  display: flex;
+  justify-content: center;
+}
 
 .selected {
   color: white;
   background-color: yellowgreen;
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .selection {
   color: white;
   display: none;
+  background-color: gray;
+  padding: 0;
+  margin: 0;
 }
+
 
 .dropdown:hover .selection {
   display: flex;
   flex-direction: column;
 }
 
-#title {
-  flex: 1;
+#inputStop {
+  flex: 2;
 }
 
 #action {
-  min-height: 500px;
+  position: relative;
+  width: 25%;
   display: flex;
   flex-direction: row;
+  align-items: top;
+  justify-content: center;
+  vertical-align: top;
 }
 
-#busImageContainer {
-  flex: 1;
+#textInput {
+  display: flex;
+  position: relative;
+  justify-content: right;
+  width: 50%;
+  vertical-align: top;
+  align-items: flex-start;
 }
