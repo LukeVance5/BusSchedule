@@ -1,0 +1,49 @@
+body {
+  background-color: #2174b8;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  height: auto;
+  width: auto;
+  max-height: 40vh;
+}
+
+.dropdown {
+  min-width: 15em;
+  position: relative;
+}
+
+
+.selected {
+  color: white;
+  background-color: yellowgreen;
+}
+
+.selection {
+  color: white;
+  display: none;
+}
+
+.dropdown:hover .selection {
+  display: flex;
+  flex-direction: column;
+}
+
+#title {
+  flex: 1;
+}
+
+#action {
+  min-height: 500px;
+  display: flex;
+  flex-direction: row;
+}
+
+#busImageContainer {
+  flex: 1;
+}

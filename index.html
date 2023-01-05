@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width" />
     <title>Bus Schedule</title>
     <script src="/scripts/translink.js" defer></script>
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
-    <h1>Bus Schedule</h1>
-    <img src="/images/bus.jpg" />
+    <div id="title">
+      <h1>Bus Schedule</h1>
+    </div>
+    <div id="busImageContainer">
+      <img src="/images/bus.jpg" />
+    </div>
     <form>
       <div id="action">
-        <label>Bus Stop</label>
-        <input type="text" id="inputStop" value="Bus Stop" />
-        <button
-          type="button"
-          onclick="busList(document.getElementById('inputStop').value)"
-        >
-          Click
-        </button>
+        <div id="textInput">
+          <label>Bus Stop</label>
+          <input type="text" id="inputStop" value="Bus Stop" />
+          <button
+            type="button"
+            onclick="busList(document.getElementById('inputStop').value)"
+          >
+            Click
+          </button>
+        </div>
       </div>
+      <div id="output"></div>
     </form>
-    <p id="test">Test</p>
   </body>
 </html>
