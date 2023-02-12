@@ -48,6 +48,10 @@ ul {
   margin: 0;
 }
 
+.busItem:hover {
+  background-color: lightgray;
+}
+
 
 .dropdown:hover .selection {
   display: flex;

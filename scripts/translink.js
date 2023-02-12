@@ -52,6 +52,7 @@ function createBusList(routes) {
     let bus = document.createElement("div");
     bus.innerText = route;
     bus.id = route;
+    li.className = "busItem"
     bus.setAttribute("onclick", "selectBus(this)");
     bus.value= route;
     li.appendChild(bus);
@@ -79,6 +80,7 @@ function selectBus(bus) {
     document.getElementById(selectedRoute).parentNode.remove();
     let buses = document.getElementById("busList");
     let li = document.createElement("li");
+    li.className = "busItem"
     let bus = document.createElement("div");
     bus.innerText = oldroute;
     bus.id = oldroute;
